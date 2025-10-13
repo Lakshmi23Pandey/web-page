@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Baba Garments — Services</title>
+  <style>
+    :root {
+      --primary: #2463eb;
+      --bg: #f5f7fa;
+      --card: #fff;
+      --text: #333;
+      --muted: #666;
+      --radius: 10px;
+      --shadow: rgba(0,0,0,0.1);
+      font-family: Arial, sans-serif;
+    }
+    * { box-sizing: border-box; margin:0; padding:0; }
+  
+    header {
+      background: var(--primary);
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2rem;
+    }
+    nav {
+      margin-top: 10px;
+    }
+    nav a {
+      color: white;
+      margin: 0 10px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .container {
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+    }
+    .service-card {
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: 0 4px 12px var(--shadow);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    .service-card img {
+      width: 100%;
+      object-fit: cover;
+      height: 160px;
+    }
+    .service-content {
+      padding: 20px;
+      flex: 1;
+    }
+    .service-content h3 {
+      margin-bottom: 10px;
+      color: var(--primary);
+    }
+    .service-content p {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+    .service-content button {
+      margin-top: auto;
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 10px 14px;
+      border-radius: var(--radius);
+      cursor: pointer;
+    }
+    .service-content button:hover {
+      background: #1f51c9;
+    }
+    #contact-banner {
+      background: var(--primary);
+      color: white;
+      padding: 30px 20px;
+      margin-top: 60px;
+      text-align: center;
+      border-radius: var(--radius);
+    }
+    #contact-banner button {
+      background: white;
+      color: var(--primary);
+      border: none;
+      padding: 10px 16px;
+      border-radius: var(--radius);
+      cursor: pointer;
+      font-weight: bold;
+    }
+    #contact-banner button:hover {
+      background: #eee;
+    }
+    footer {
+      text-align: center;
+      margin: 60px 0 20px;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Baba Garments</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="contact.html">Contact</a>
+      <a href="about.html">About</a>
+    </nav>
+  </header>
+
+  <div class="container">
+    <h2 style="text-align:center; margin-bottom: 30px;">Our Services</h2>
+    <div class="services-grid">
+      <div class="service-card">
+        <img src="box1_image.jpg" alt="Custom Tailoring">
+        <div class="service-content">
+          <h3>Custom Tailoring</h3>
+          <p>We design and stitch garments as per your measurements and style preferences. High precision and quality finishing.</p>
+          <button onclick="inquire('Custom Tailoring')">Inquire</button>
+        </div>
+      </div>
+      <div class="service-card">
+        <img src="box2_image.jpg" alt="Bulk Orders">
+        <div class="service-content">
+          <h3>Bulk Orders</h3>
+          <p>Large scale orders for uniforms, events, teams, and corporates with competitive pricing and timely delivery.</p>
+          <button onclick="inquire('Bulk Orders')">Inquire</button>
+        </div>
+      </div>
+      <div class="service-card">
+        <img src="box3_image.jpg" alt="Alterations">
+        <div class="service-content">
+          <h3>Alterations & Repairs</h3>
+          <p>Have a garment that needs fixing or resizing? We provide alteration services to make it fit perfectly again.</p>
+          <button onclick="inquire('Alterations & Repairs')">Inquire</button>
+        </div>
+      </div>
+      <div class="service-card">
+        <img src="box4_image.png" alt="Embroidery">
+        <div class="service-content">
+          <h3>Embroidery & Prints</h3>
+          <p>Custom embroidery, screen printing, and logos on garments. Ideal for branding, gifts, and events.</p>
+          <button onclick="inquire('Embroidery & Prints')">Inquire</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="contact-banner">
+      <h3>Want to talk more?</h3>
+      <p>Contact us for details, pricing, or quotes.</p>
+      <button onclick="goToContact()">Contact Us</button>
+    </div>
+  </div>
+
+  <footer>© 2025 Baba Garments. All rights reserved.</footer>
+
+  <script>
+    function inquire(serviceName) {
+      // This could open contact page with prefilled subject
+      // Example: contact.html?service=Custom%20Tailoring
+      const encoded = encodeURIComponent(serviceName);
+      window.location.href = `contact.html?service=${encoded}`;
+    }
+    function goToContact() {
+      window.location.href = 'contact.html';
+    }
+
+    // On contact page, you could read the service from URL and prefill subject.
+    // Here's sample code (to be placed in contact.html) for prefilling:
+    /*
+    window.addEventListener('DOMContentLoaded', () => {
+      const params = new URLSearchParams(window.location.search);
+      const svc = params.get('service');
+      if (svc) {
+        const subjEl = document.getElementById('subject');
+        if (subjEl) subjEl.value = svc;
+      }
+    });
+    */
+  </script>
+</body>
+</html>
